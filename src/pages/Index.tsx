@@ -37,24 +37,24 @@ const photos: Photo[] = [
   },
   {
     id: 4,
-    title: "Сумеречная чаща",
-    collection: "Туманный лес",
-    price: 2500,
-    image: "https://cdn.poehali.dev/projects/6102bceb-076e-4a20-830f-c0cb8ee1da16/files/73aad4c4-647e-4783-b783-844231a38f92.jpg"
+    title: "Папоротниковая чаща",
+    collection: "Дикая природа",
+    price: 2900,
+    image: "https://cdn.poehali.dev/projects/6102bceb-076e-4a20-830f-c0cb8ee1da16/files/abf63dbc-325c-4b90-9495-339a7d1ea93f.jpg"
   },
   {
     id: 5,
-    title: "Таинственная глубина",
-    collection: "Ночной лес",
-    price: 3200,
-    image: "https://cdn.poehali.dev/projects/6102bceb-076e-4a20-830f-c0cb8ee1da16/files/6474dbd8-39a7-4d87-bc10-447302e6d99b.jpg"
+    title: "Осенняя тропа",
+    collection: "Туманный лес",
+    price: 2700,
+    image: "https://cdn.poehali.dev/projects/6102bceb-076e-4a20-830f-c0cb8ee1da16/files/497e850a-b745-4654-b246-ea98e32a20ee.jpg"
   },
   {
     id: 6,
-    title: "Свет сквозь кроны",
-    collection: "Дикая природа",
-    price: 2700,
-    image: "https://cdn.poehali.dev/projects/6102bceb-076e-4a20-830f-c0cb8ee1da16/files/6e4da20a-6b16-43d5-855c-ad293a1bbd4b.jpg"
+    title: "Дождливый бор",
+    collection: "Ночной лес",
+    price: 3100,
+    image: "https://cdn.poehali.dev/projects/6102bceb-076e-4a20-830f-c0cb8ee1da16/files/e8092ccf-bed0-4a30-a3d9-a3ce47d5ffce.jpg"
   },
   {
     id: 7,
@@ -79,24 +79,24 @@ const photos: Photo[] = [
   },
   {
     id: 10,
-    title: "Туманная мгла",
-    collection: "Туманный лес",
-    price: 2400,
-    image: "https://cdn.poehali.dev/projects/6102bceb-076e-4a20-830f-c0cb8ee1da16/files/73aad4c4-647e-4783-b783-844231a38f92.jpg"
+    title: "Зачарованный лес",
+    collection: "Дикая природа",
+    price: 2850,
+    image: "https://cdn.poehali.dev/projects/6102bceb-076e-4a20-830f-c0cb8ee1da16/files/abf63dbc-325c-4b90-9495-339a7d1ea93f.jpg"
   },
   {
     id: 11,
-    title: "Ночная тишина",
-    collection: "Ночной лес",
-    price: 2900,
-    image: "https://cdn.poehali.dev/projects/6102bceb-076e-4a20-830f-c0cb8ee1da16/files/6474dbd8-39a7-4d87-bc10-447302e6d99b.jpg"
+    title: "Золотая осень",
+    collection: "Туманный лес",
+    price: 2650,
+    image: "https://cdn.poehali.dev/projects/6102bceb-076e-4a20-830f-c0cb8ee1da16/files/497e850a-b745-4654-b246-ea98e32a20ee.jpg"
   },
   {
     id: 12,
-    title: "Зов природы",
-    collection: "Дикая природа",
-    price: 3000,
-    image: "https://cdn.poehali.dev/projects/6102bceb-076e-4a20-830f-c0cb8ee1da16/files/6e4da20a-6b16-43d5-855c-ad293a1bbd4b.jpg"
+    title: "Штормовой лес",
+    collection: "Ночной лес",
+    price: 3300,
+    image: "https://cdn.poehali.dev/projects/6102bceb-076e-4a20-830f-c0cb8ee1da16/files/e8092ccf-bed0-4a30-a3d9-a3ce47d5ffce.jpg"
   }
 ];
 
