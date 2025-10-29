@@ -54,6 +54,48 @@ const photos: Photo[] = [
     collection: "Дикая природа",
     price: 2700,
     image: "https://cdn.poehali.dev/projects/6102bceb-076e-4a20-830f-c0cb8ee1da16/files/6e4da20a-6b16-43d5-855c-ad293a1bbd4b.jpg"
+  },
+  {
+    id: 7,
+    title: "Берёзовая роща",
+    collection: "Туманный лес",
+    price: 2600,
+    image: "https://cdn.poehali.dev/projects/6102bceb-076e-4a20-830f-c0cb8ee1da16/files/9511a977-d7d7-4384-9c80-7e189094b6ea.jpg"
+  },
+  {
+    id: 8,
+    title: "Древний бор",
+    collection: "Дикая природа",
+    price: 3500,
+    image: "https://cdn.poehali.dev/projects/6102bceb-076e-4a20-830f-c0cb8ee1da16/files/bf6e1eb9-357b-4392-84b3-942f98d9a070.jpg"
+  },
+  {
+    id: 9,
+    title: "Зимнее безмолвие",
+    collection: "Ночной лес",
+    price: 3100,
+    image: "https://cdn.poehali.dev/projects/6102bceb-076e-4a20-830f-c0cb8ee1da16/files/ea02c5d8-8a49-4e3a-a19e-e943b9b5099a.jpg"
+  },
+  {
+    id: 10,
+    title: "Туманная мгла",
+    collection: "Туманный лес",
+    price: 2400,
+    image: "https://cdn.poehali.dev/projects/6102bceb-076e-4a20-830f-c0cb8ee1da16/files/73aad4c4-647e-4783-b783-844231a38f92.jpg"
+  },
+  {
+    id: 11,
+    title: "Ночная тишина",
+    collection: "Ночной лес",
+    price: 2900,
+    image: "https://cdn.poehali.dev/projects/6102bceb-076e-4a20-830f-c0cb8ee1da16/files/6474dbd8-39a7-4d87-bc10-447302e6d99b.jpg"
+  },
+  {
+    id: 12,
+    title: "Зов природы",
+    collection: "Дикая природа",
+    price: 3000,
+    image: "https://cdn.poehali.dev/projects/6102bceb-076e-4a20-830f-c0cb8ee1da16/files/6e4da20a-6b16-43d5-855c-ad293a1bbd4b.jpg"
   }
 ];
 
