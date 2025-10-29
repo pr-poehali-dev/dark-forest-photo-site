@@ -138,13 +138,24 @@ const Index = () => {
     <div className="min-h-screen bg-background">
       <nav className="fixed top-0 w-full bg-background/95 backdrop-blur-sm border-b border-border z-50">
         <div className="container mx-auto px-4 py-4 flex items-center justify-between">
-          <h1 className="text-2xl font-bold text-primary">Forest Gallery</h1>
+          <h1 className="text-2xl font-bold text-primary cursor-pointer" onClick={() => setActiveSection('главная')}>
+            Forest Gallery
+          </h1>
           <div className="flex gap-6">
             {['Главная', 'Галерея', 'Коллекции', 'О проекте'].map((item) => (
               <button
                 key={item}
-                onClick={() => setActiveSection(item.toLowerCase())}
-                className="text-foreground/80 hover:text-primary transition-colors"
+                onClick={() => {
+                  setActiveSection(item.toLowerCase());
+                  const sectionId = item.toLowerCase().replace(' ', '-');
+                  const element = document.getElementById(sectionId);
+                  if (element) {
+                    element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                  }
+                }}
+                className={`text-foreground/80 hover:text-primary transition-colors ${
+                  activeSection === item.toLowerCase() ? 'text-primary font-semibold' : ''
+                }`}
               >
                 {item}
               </button>
@@ -153,7 +164,7 @@ const Index = () => {
         </div>
       </nav>
 
-      <section className="pt-32 pb-20 px-4">
+      <section id="главная" className="pt-32 pb-20 px-4">
         <div className="container mx-auto text-center animate-fade-in">
           <h2 className="text-6xl font-bold mb-6 text-foreground">
             Тёмные лесные пейзажи
@@ -163,11 +174,25 @@ const Index = () => {
             Каждый кадр — это путешествие в глубины природы.
           </p>
           <div className="flex gap-4 justify-center">
-            <Button size="lg" className="bg-primary text-primary-foreground hover:bg-primary/90">
+            <Button 
+              size="lg" 
+              className="bg-primary text-primary-foreground hover:bg-primary/90"
+              onClick={() => {
+                setActiveSection('галерея');
+                document.getElementById('галерея')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+              }}
+            >
               <Icon name="Image" className="mr-2" size={20} />
               Смотреть галерею
             </Button>
-            <Button size="lg" variant="outline">
+            <Button 
+              size="lg" 
+              variant="outline"
+              onClick={() => {
+                setActiveSection('коллекции');
+                document.getElementById('коллекции')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+              }}
+            >
               <Icon name="Layers" className="mr-2" size={20} />
               Коллекции
             </Button>
@@ -175,7 +200,7 @@ const Index = () => {
         </div>
       </section>
 
-      <section className="py-16 px-4 bg-card">
+      <section id="коллекции" className="py-16 px-4 bg-card">
         <div className="container mx-auto">
           <h3 className="text-4xl font-bold mb-12 text-center text-foreground">
             Тематические коллекции
@@ -189,6 +214,7 @@ const Index = () => {
                 onClick={() => {
                   setSelectedCollection(collection.name);
                   setActiveSection('галерея');
+                  document.getElementById('галерея')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
                 }}
               >
                 <Icon name={collection.icon} size={48} className="text-primary mb-4" />
@@ -204,7 +230,7 @@ const Index = () => {
         </div>
       </section>
 
-      <section className="py-20 px-4">
+      <section id="галерея" className="py-20 px-4">
         <div className="container mx-auto">
           <div className="flex flex-col md:flex-row items-start md:items-center justify-between mb-8 gap-4">
             <h3 className="text-4xl font-bold text-foreground">
@@ -293,7 +319,7 @@ const Index = () => {
         </div>
       </section>
 
-      <section className="py-20 px-4 bg-card">
+      <section id="о проекте" className="py-20 px-4 bg-card">
         <div className="container mx-auto max-w-4xl">
           <h3 className="text-4xl font-bold mb-8 text-center text-foreground">
             О проекте
