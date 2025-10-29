@@ -3,6 +3,7 @@ import { Card } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Dialog, DialogContent } from '@/components/ui/dialog';
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import Icon from '@/components/ui/icon';
 
 interface Photo {
@@ -110,10 +111,28 @@ const Index = () => {
   const [activeSection, setActiveSection] = useState('home');
   const [selectedCollection, setSelectedCollection] = useState<string | null>(null);
   const [selectedPhoto, setSelectedPhoto] = useState<Photo | null>(null);
+  const [sortBy, setSortBy] = useState<string>('default');
+  const [priceRange, setPriceRange] = useState<string>('all');
 
-  const filteredPhotos = selectedCollection
+  let filteredPhotos = selectedCollection
     ? photos.filter(p => p.collection === selectedCollection)
     : photos;
+
+  if (priceRange === 'low') {
+    filteredPhotos = filteredPhotos.filter(p => p.price < 2700);
+  } else if (priceRange === 'medium') {
+    filteredPhotos = filteredPhotos.filter(p => p.price >= 2700 && p.price <= 3000);
+  } else if (priceRange === 'high') {
+    filteredPhotos = filteredPhotos.filter(p => p.price > 3000);
+  }
+
+  if (sortBy === 'price-asc') {
+    filteredPhotos = [...filteredPhotos].sort((a, b) => a.price - b.price);
+  } else if (sortBy === 'price-desc') {
+    filteredPhotos = [...filteredPhotos].sort((a, b) => b.price - a.price);
+  } else if (sortBy === 'name') {
+    filteredPhotos = [...filteredPhotos].sort((a, b) => a.title.localeCompare(b.title));
+  }
 
   return (
     <div className="min-h-screen bg-background">
@@ -187,19 +206,53 @@ const Index = () => {
 
       <section className="py-20 px-4">
         <div className="container mx-auto">
-          <div className="flex items-center justify-between mb-12">
+          <div className="flex flex-col md:flex-row items-start md:items-center justify-between mb-8 gap-4">
             <h3 className="text-4xl font-bold text-foreground">
               {selectedCollection || 'Галерея'}
             </h3>
-            {selectedCollection && (
-              <Button 
-                variant="outline" 
-                onClick={() => setSelectedCollection(null)}
-              >
-                <Icon name="X" className="mr-2" size={16} />
-                Показать все
-              </Button>
-            )}
+            <div className="flex gap-3 flex-wrap items-center">
+              {selectedCollection && (
+                <Button 
+                  variant="outline" 
+                  onClick={() => setSelectedCollection(null)}
+                >
+                  <Icon name="X" className="mr-2" size={16} />
+                  Показать все
+                </Button>
+              )}
+            </div>
+          </div>
+          
+          <div className="flex flex-col md:flex-row gap-4 mb-8 items-start md:items-center justify-between">
+            <div className="flex gap-3 flex-wrap">
+              <Select value={priceRange} onValueChange={setPriceRange}>
+                <SelectTrigger className="w-[200px]">
+                  <SelectValue placeholder="Цена" />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="all">Все цены</SelectItem>
+                  <SelectItem value="low">До 2700 ₽</SelectItem>
+                  <SelectItem value="medium">2700 - 3000 ₽</SelectItem>
+                  <SelectItem value="high">От 3000 ₽</SelectItem>
+                </SelectContent>
+              </Select>
+
+              <Select value={sortBy} onValueChange={setSortBy}>
+                <SelectTrigger className="w-[200px]">
+                  <SelectValue placeholder="Сортировка" />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="default">По умолчанию</SelectItem>
+                  <SelectItem value="price-asc">Цена: по возрастанию</SelectItem>
+                  <SelectItem value="price-desc">Цена: по убыванию</SelectItem>
+                  <SelectItem value="name">По названию</SelectItem>
+                </SelectContent>
+              </Select>
+            </div>
+            
+            <div className="text-muted-foreground">
+              Найдено: {filteredPhotos.length} фото
+            </div>
           </div>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {filteredPhotos.map((photo, idx) => (
