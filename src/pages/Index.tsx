@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Card } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
@@ -113,6 +113,16 @@ const Index = () => {
   const [selectedPhoto, setSelectedPhoto] = useState<Photo | null>(null);
   const [sortBy, setSortBy] = useState<string>('default');
   const [priceRange, setPriceRange] = useState<string>('all');
+  const [showScrollTop, setShowScrollTop] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setShowScrollTop(window.scrollY > 400);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   let filteredPhotos = selectedCollection
     ? photos.filter(p => p.collection === selectedCollection)
@@ -358,6 +368,16 @@ const Index = () => {
           <p>© 2024 Forest Gallery. Все права защищены.</p>
         </div>
       </footer>
+
+      {showScrollTop && (
+        <Button
+          onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+          className="fixed bottom-8 right-8 rounded-full w-14 h-14 bg-primary text-primary-foreground shadow-lg hover:shadow-xl hover:scale-110 transition-all z-50"
+          size="icon"
+        >
+          <Icon name="ArrowUp" size={24} />
+        </Button>
+      )}
 
       <Dialog open={!!selectedPhoto} onOpenChange={() => setSelectedPhoto(null)}>
         <DialogContent className="max-w-5xl p-0 bg-background border-border">
