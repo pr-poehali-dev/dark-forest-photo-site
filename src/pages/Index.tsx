@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { Card } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
+import { Dialog, DialogContent } from '@/components/ui/dialog';
 import Icon from '@/components/ui/icon';
 
 interface Photo {
@@ -108,6 +109,7 @@ const collections = [
 const Index = () => {
   const [activeSection, setActiveSection] = useState('home');
   const [selectedCollection, setSelectedCollection] = useState<string | null>(null);
+  const [selectedPhoto, setSelectedPhoto] = useState<Photo | null>(null);
 
   const filteredPhotos = selectedCollection
     ? photos.filter(p => p.collection === selectedCollection)
@@ -205,6 +207,7 @@ const Index = () => {
                 key={photo.id}
                 className="overflow-hidden group cursor-pointer bg-card border-border hover:border-primary transition-all animate-fade-in"
                 style={{ animationDelay: `${idx * 50}ms` }}
+                onClick={() => setSelectedPhoto(photo)}
               >
                 <div className="relative overflow-hidden aspect-[4/5]">
                   <img
@@ -225,7 +228,7 @@ const Index = () => {
                           {photo.price} ₽
                         </span>
                         <Button size="sm" className="bg-primary text-primary-foreground">
-                          <Icon name="ShoppingCart" size={16} />
+                          <Icon name="ZoomIn" size={16} />
                         </Button>
                       </div>
                     </div>
@@ -276,6 +279,57 @@ const Index = () => {
           <p>© 2024 Forest Gallery. Все права защищены.</p>
         </div>
       </footer>
+
+      <Dialog open={!!selectedPhoto} onOpenChange={() => setSelectedPhoto(null)}>
+        <DialogContent className="max-w-5xl p-0 bg-background border-border">
+          {selectedPhoto && (
+            <div className="grid md:grid-cols-2 gap-0">
+              <div className="relative aspect-square md:aspect-auto">
+                <img
+                  src={selectedPhoto.image}
+                  alt={selectedPhoto.title}
+                  className="w-full h-full object-cover"
+                />
+              </div>
+              <div className="p-8 flex flex-col justify-between">
+                <div>
+                  <Badge className="mb-4 bg-primary/20 text-primary border-primary">
+                    {selectedPhoto.collection}
+                  </Badge>
+                  <h3 className="text-4xl font-bold mb-4 text-foreground">
+                    {selectedPhoto.title}
+                  </h3>
+                  <p className="text-muted-foreground text-lg mb-6">
+                    Профессиональная фотография высокого разрешения. 
+                    Подходит для печати и коммерческого использования.
+                  </p>
+                  <div className="space-y-4 mb-8">
+                    <div className="flex items-center gap-3">
+                      <Icon name="Image" size={20} className="text-primary" />
+                      <span className="text-foreground">Высокое разрешение</span>
+                    </div>
+                    <div className="flex items-center gap-3">
+                      <Icon name="Download" size={20} className="text-primary" />
+                      <span className="text-foreground">Цифровая загрузка</span>
+                    </div>
+                    <div className="flex items-center gap-3">
+                      <Icon name="FileCheck" size={20} className="text-primary" />
+                      <span className="text-foreground">Лицензия на использование</span>
+                    </div>
+                  </div>
+                </div>
+                <div className="border-t border-border pt-6">
+                  <div className="flex items-center justify-between">
+                    <span className="text-4xl font-bold text-primary">
+                      {selectedPhoto.price} ₽
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          )}
+        </DialogContent>
+      </Dialog>
     </div>
   );
 };
