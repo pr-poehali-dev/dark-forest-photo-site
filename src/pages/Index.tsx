@@ -19,84 +19,84 @@ const photos: Photo[] = [
     id: 1,
     title: "Туманный рассвет",
     collection: "Туманный лес",
-    price: 2500,
+    price: 1200,
     image: "https://cdn.poehali.dev/projects/6102bceb-076e-4a20-830f-c0cb8ee1da16/files/73aad4c4-647e-4783-b783-844231a38f92.jpg"
   },
   {
     id: 2,
     title: "Лунная тропа",
     collection: "Ночной лес",
-    price: 3000,
+    price: 1500,
     image: "https://cdn.poehali.dev/projects/6102bceb-076e-4a20-830f-c0cb8ee1da16/files/6474dbd8-39a7-4d87-bc10-447302e6d99b.jpg"
   },
   {
     id: 3,
     title: "Утреннее волшебство",
     collection: "Дикая природа",
-    price: 2800,
+    price: 1400,
     image: "https://cdn.poehali.dev/projects/6102bceb-076e-4a20-830f-c0cb8ee1da16/files/6e4da20a-6b16-43d5-855c-ad293a1bbd4b.jpg"
   },
   {
     id: 4,
     title: "Папоротниковая чаща",
     collection: "Дикая природа",
-    price: 2900,
+    price: 1450,
     image: "https://cdn.poehali.dev/projects/6102bceb-076e-4a20-830f-c0cb8ee1da16/files/abf63dbc-325c-4b90-9495-339a7d1ea93f.jpg"
   },
   {
     id: 5,
     title: "Осенняя тропа",
     collection: "Туманный лес",
-    price: 2700,
+    price: 1350,
     image: "https://cdn.poehali.dev/projects/6102bceb-076e-4a20-830f-c0cb8ee1da16/files/497e850a-b745-4654-b246-ea98e32a20ee.jpg"
   },
   {
     id: 6,
     title: "Дождливый бор",
     collection: "Ночной лес",
-    price: 3100,
+    price: 1550,
     image: "https://cdn.poehali.dev/projects/6102bceb-076e-4a20-830f-c0cb8ee1da16/files/e8092ccf-bed0-4a30-a3d9-a3ce47d5ffce.jpg"
   },
   {
     id: 7,
     title: "Берёзовая роща",
     collection: "Туманный лес",
-    price: 2600,
+    price: 1300,
     image: "https://cdn.poehali.dev/projects/6102bceb-076e-4a20-830f-c0cb8ee1da16/files/9511a977-d7d7-4384-9c80-7e189094b6ea.jpg"
   },
   {
     id: 8,
     title: "Древний бор",
     collection: "Дикая природа",
-    price: 3500,
+    price: 1750,
     image: "https://cdn.poehali.dev/projects/6102bceb-076e-4a20-830f-c0cb8ee1da16/files/bf6e1eb9-357b-4392-84b3-942f98d9a070.jpg"
   },
   {
     id: 9,
     title: "Зимнее безмолвие",
     collection: "Ночной лес",
-    price: 3100,
+    price: 1550,
     image: "https://cdn.poehali.dev/projects/6102bceb-076e-4a20-830f-c0cb8ee1da16/files/ea02c5d8-8a49-4e3a-a19e-e943b9b5099a.jpg"
   },
   {
     id: 10,
     title: "Зачарованный лес",
     collection: "Дикая природа",
-    price: 2850,
+    price: 1425,
     image: "https://cdn.poehali.dev/projects/6102bceb-076e-4a20-830f-c0cb8ee1da16/files/abf63dbc-325c-4b90-9495-339a7d1ea93f.jpg"
   },
   {
     id: 11,
     title: "Золотая осень",
     collection: "Туманный лес",
-    price: 2650,
+    price: 1325,
     image: "https://cdn.poehali.dev/projects/6102bceb-076e-4a20-830f-c0cb8ee1da16/files/497e850a-b745-4654-b246-ea98e32a20ee.jpg"
   },
   {
     id: 12,
     title: "Штормовой лес",
     collection: "Ночной лес",
-    price: 3300,
+    price: 1650,
     image: "https://cdn.poehali.dev/projects/6102bceb-076e-4a20-830f-c0cb8ee1da16/files/e8092ccf-bed0-4a30-a3d9-a3ce47d5ffce.jpg"
   }
 ];
@@ -119,11 +119,11 @@ const Index = () => {
     : photos;
 
   if (priceRange === 'low') {
-    filteredPhotos = filteredPhotos.filter(p => p.price < 2700);
+    filteredPhotos = filteredPhotos.filter(p => p.price < 1400);
   } else if (priceRange === 'medium') {
-    filteredPhotos = filteredPhotos.filter(p => p.price >= 2700 && p.price <= 3000);
+    filteredPhotos = filteredPhotos.filter(p => p.price >= 1400 && p.price <= 1500);
   } else if (priceRange === 'high') {
-    filteredPhotos = filteredPhotos.filter(p => p.price > 3000);
+    filteredPhotos = filteredPhotos.filter(p => p.price > 1500);
   }
 
   if (sortBy === 'price-asc') {
@@ -231,9 +231,9 @@ const Index = () => {
                 </SelectTrigger>
                 <SelectContent>
                   <SelectItem value="all">Все цены</SelectItem>
-                  <SelectItem value="low">До 2700 ₽</SelectItem>
-                  <SelectItem value="medium">2700 - 3000 ₽</SelectItem>
-                  <SelectItem value="high">От 3000 ₽</SelectItem>
+                  <SelectItem value="low">До 1400 ₽</SelectItem>
+                  <SelectItem value="medium">1400 - 1500 ₽</SelectItem>
+                  <SelectItem value="high">От 1500 ₽</SelectItem>
                 </SelectContent>
               </Select>
 
